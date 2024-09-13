@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct informationRow: View {
+    let title: String
+    let info : String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 12){
+            Text(title)
+            Text(info)
+                .foregroundColor(Color(.darkGray))
+                .fontWeight(.semibold)
+                .font(.headline)
+                
+        }
+        .frame(width: UIScreen.main.bounds.width * 0.9, alignment: .leading)
+        
+        
     }
 }
 
 #Preview {
-    informationRow()
+    informationRow(title: "Name", info: "Metehan Canpolat")
 }

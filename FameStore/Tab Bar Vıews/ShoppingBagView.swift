@@ -28,7 +28,11 @@ struct ShoppingBagView: View {
     var body: some View {
         NavigationView {
                 VStack{
-                   
+                   Text("Shopping Bag")
+                        .frame( width: UIScreen.main.bounds.width * 0.9 , alignment: .leading)
+                        .font(Font.custom("dot", size: 35))
+                        
+                        
                     ScrollView(showsIndicators: true) {
                 
                             // Core Data'dan gelen ürünlerimizi listelemek için ForEach kullanıyoruz
@@ -102,7 +106,7 @@ struct ShoppingBagView: View {
 
                 }
    
-            .navigationTitle("Shopping Bag")
+            //.navigationTitle("Shopping Bag")
             //BACK BUTTON
             .navigationBarItems(leading: isTabViewActive ? AnyView(EmptyView()) : AnyView(
                 Button(action: {

@@ -58,11 +58,7 @@ struct CategoriesProductView: View {
                             .frame(width: UIScreen.main.bounds.width * 0.85)
                         }
                         .padding()
-                        .sheet(isPresented: $isShowingDetail) {
-                            if let selectedProduct = selectedProduct {
-                                ProductDetailView(product: selectedProduct)
-                            }
-                        }
+                      
                     }
                 }
                 .padding()
@@ -85,6 +81,11 @@ struct CategoriesProductView: View {
                     } catch {
                         print("Failed to fetch products: \(error)")
                     }
+                }
+            }
+            .sheet(isPresented: $isShowingDetail) {
+                if let selectedProduct = selectedProduct {
+                    ProductDetailView(product: selectedProduct)
                 }
             }
         }

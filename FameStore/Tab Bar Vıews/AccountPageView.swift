@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct AccountPageView: View {
+    @EnvironmentObject var viewModel : AuthViewModel
+
+    //JWT
+    
+
     var body: some View {
-        Text("account page")
+        
+        Group {
+            if viewModel.userSession != nil {
+                ProfileView()
+            } else {
+                LoginView()
+                
+            }
+            
+        }
     }
 }
 
