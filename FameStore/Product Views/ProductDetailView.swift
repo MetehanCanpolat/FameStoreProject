@@ -9,6 +9,7 @@ import CoreData
 import SwiftUI
 
 struct ProductDetailView: View {
+    @Environment(\.presentationMode) var presentationMode
     let product: productModel
     @Environment(\.dismiss) var dismiss
     @State private var basket: [AddedProduct] = []
@@ -16,17 +17,9 @@ struct ProductDetailView: View {
     let managedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
 
     var body: some View {
-        ScrollView {
+        NavigationView {
             VStack {
-                HStack {
-                    Button("Back") {
-                        dismiss()
-                    }
-                    .padding()
-                    .foregroundColor(.black)
-
-                    Spacer()
-                }
+            
                 AsyncImage(url: URL(string: product.image)) { image in
                     image
                         .resizable()
@@ -40,13 +33,16 @@ struct ProductDetailView: View {
                         .frame(width: UIScreen.main.bounds.width * 0.5)
                 }
                 Text(product.title)
-                    .font(Font.custom("GFS Didot", size: 25))
+                    .font(Font.custom("Georgia", size: 24))
                     .padding()
                     .frame(width: UIScreen.main.bounds.width * 0.8)
-                Text("Price: \(product.price, specifier: "%.2f") $")
-                    .font(.title)
-                    .foregroundColor(.gray)
-                    .padding()
+                HStack{
+                    Spacer()
+                    Text("Price: \(product.price, specifier: "%.2f") $")
+                        .font(Font.custom("Georgia", size: 24))
+                        .foregroundColor(.gray)
+                        .padding(.trailing, 20.0)
+                }
 
                 // Sepete ekleme butonu
                 HStack {
@@ -62,15 +58,21 @@ struct ProductDetailView: View {
                             .background(Color.gray)
                             .cornerRadius(10)
                     }
-                    .padding(20)
+                    .padding([.bottom, .trailing], 20)
                     .fullScreenCover(isPresented: $ShowingShoppingBagView) {
                         ShoppingBagView(isTabViewActive: false)
                     }
                 }
               
-                Text("Product Description")
+                HStack{
+                    Text("Product Description")
+                        .font(Font.custom("Georgia", size: 20))
+                        .padding(.leading, 20.0)
+                    Spacer()
+                       
+                }
                 Text(product.description)
-                    .font(.footnote)
+                    .font(Font.custom("Georgia", size: 15))
                     .foregroundColor(.black)
                     .frame(width: UIScreen.main.bounds.width * 0.9)
                     .padding(5)
@@ -101,5 +103,5 @@ struct ProductDetailView: View {
 }
 
 #Preview {
-    ProductDetailView(product: productModel(id: 1, title: "ürün", price: 10, category: "kategori", image: "photo", description: "açıklama"))
+    ProductDetailView(product: productModel(id: 1, title: "ürün adi", price: 10, category: "kategori", image: "photo", description: "açıklama"))
 }

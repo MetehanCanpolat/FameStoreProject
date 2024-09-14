@@ -16,17 +16,19 @@ struct CategoriesProductView: View {
 
     var body: some View {
         NavigationView {
+            
             ScrollView {
                 VStack(alignment: .leading) {
-                    // Dizinin sınırlarını kontrol ederek güvenli dilimleme
-
+        
+                    Text("\(category.capitalized)")
+                        .frame( width: UIScreen.main.bounds.width * 0.9 , alignment: .leading)
+                        .font(Font.custom("Georgia", size: 32))
                     
                     ForEach(products) { product in
                         Button{
                             selectedProduct = product
                             isShowingDetail = true
-                            print("Selected product: \(product.title)") // Debug için ürün başlığını yazdırıyoruz
-                            
+                            print("Selected product: \(product.title)")
                         }label: {
                             //İMAGE İLE TEXTLERİ AYIRDIM
                             HStack(alignment: .center) {
@@ -45,12 +47,12 @@ struct CategoriesProductView: View {
                                 VStack(alignment: .trailing) {
                                     // Ürün başlığının ilk üç kelimesini almak için "components" fonksiyonu
                                     Text(product.title.components(separatedBy: " ").prefix(3).joined(separator: " "))
-                                        .font(.headline)
+                                        .font(Font.custom("Georgia", size: 22))
                                         .foregroundColor(.black)
                                         .padding(.bottom, 5)
                                     
                                     Text("Price: \(product.price, specifier: "%.2f") $")
-                                        .font(.subheadline)
+                                        .font(Font.custom("Georgia", size: 17))
                                         .foregroundColor(.gray)
                                 }
                             }
@@ -66,13 +68,13 @@ struct CategoriesProductView: View {
           
               
             }
-            .navigationTitle("\(category.capitalized)")
             .navigationBarItems(leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.black)
                 Text("Back")
+                    .foregroundColor(.black)
             })
             .onAppear {
                 Task {

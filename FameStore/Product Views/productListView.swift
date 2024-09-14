@@ -51,11 +51,11 @@ struct productListView: View {
                                 }
                                 //TTITLE ILK ÜÇ KELİMESİNİ ALMAK İÇİN "speratedBy" fonksiyonunu kullanıyoruz
                                 Text(product.title.components(separatedBy: " ").prefix(3).joined(separator: " "))
-                                    .font(.headline)
+                                    .font(Font.custom("Georgia", size: 18))
                                     .foregroundColor(.black)
                                     .frame(width: 100)
                                 Text("Price: \(product.price, specifier: "%.2f") $")
-                                    .font(.subheadline)
+                                    .font(Font.custom("Georgia", size: 15))
                                     .foregroundColor(.gray)
                             }
                         }
