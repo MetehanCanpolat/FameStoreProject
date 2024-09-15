@@ -57,6 +57,7 @@
 		0FAAA3432C91C80E006DA074 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0FAAA3422C91C80E006DA074 /* FirebaseStorage */; };
 		0FAAA3452C91C80E006DA074 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0FAAA3442C91C80E006DA074 /* FirebaseStorageCombine-Community */; };
 		0FAAA3472C91C80E006DA074 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 0FAAA3462C91C80E006DA074 /* FirebaseVertexAI-Preview */; };
+		0FDA88E82C974FD300503C3D /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA88E72C974FD300503C3D /* DatePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		0FAAA3132C91C6D1006DA074 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0FAAA3152C91C6DB006DA074 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		0FAAA3172C91C798006DA074 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0FDA88E72C974FD300503C3D /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,7 @@
 				0F136B4F2C91715500DD7EB7 /* ContentView.swift */,
 				0F136B4D2C91715500DD7EB7 /* FameStoreApp.swift */,
 				0F136B512C91715600DD7EB7 /* Assets.xcassets */,
-				0F8731252C96F7F400DFBEAF /* New Group */,
+				0F8731252C96F7F400DFBEAF /* Payment Group */,
 				0FAAA2D72C917290006DA074 /* Account Group */,
 				0FAAA2CF2C91725B006DA074 /* Menu Vıews */,
 				0FAAA2D62C91728E006DA074 /* Product Views */,
@@ -176,12 +178,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0F8731252C96F7F400DFBEAF /* New Group */ = {
+		0F8731252C96F7F400DFBEAF /* Payment Group */ = {
 			isa = PBXGroup;
 			children = (
 				0F8731262C96F89300DFBEAF /* PaymentView.swift */,
+				0FDA88E72C974FD300503C3D /* DatePickerView.swift */,
 			);
-			path = "New Group";
+			path = "Payment Group";
 			sourceTree = "<group>";
 		};
 		0FAAA2CF2C91725B006DA074 /* Menu Vıews */ = {
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FAAA3102C91C6B4006DA074 /* inputView.swift in Sources */,
+				0FDA88E82C974FD300503C3D /* DatePickerView.swift in Sources */,
 				0FAAA2FC2C917A5C006DA074 /* AllProductsView.swift in Sources */,
 				0FAAA2F02C91767C006DA074 /* CategoriesProductView.swift in Sources */,
 				0F136B502C91715500DD7EB7 /* ContentView.swift in Sources */,

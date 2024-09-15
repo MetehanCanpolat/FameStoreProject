@@ -27,6 +27,7 @@ struct PaymentView: View {
     @State private var cardDate = ""
     
     let maxLength = 16
+    let maxLengthCvv = 3
     
     var body: some View {
         
@@ -45,12 +46,13 @@ struct PaymentView: View {
                     TextField("Name", text: $cardOwnerName)
                         .autocapitalization(.words)
                         .onChange(of: cardOwnerName) { Value in
-                            let filtered = Value.filter { $0.isLetter }
+                            let letterFiltered = Value.filter { $0.isLetter }
                         }
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
 
                 }
+                .frame(width: UIScreen.main.bounds.width * 0.9)
                 
                 VStack(alignment: .leading){
                     Text("Card Number")
@@ -70,9 +72,31 @@ struct PaymentView: View {
                         .padding()
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
+                .frame(width: UIScreen.main.bounds.width * 0.9)
                 
-                
-                
+                HStack{
+                    VStack(alignment: .leading){
+                        Text("Card Date")
+                        DatePickerView()
+                    }
+                    
+                    Spacer()
+                    
+                    VStack{
+                        Text("CVV")
+                        TextField("CVV", text: $cvvNumber)
+                            .keyboardType(.numberPad)
+                            .onChange(of: cvvNumber) { cvvValue in
+                                let cvvFiltered = cvvValue.filter { $0.isNumber}
+                                
+                               
+                            }
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 50)
+                        
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.9)
                 
                 
             }
