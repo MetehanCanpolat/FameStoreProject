@@ -23,6 +23,9 @@ struct PaymentView: View {
     
     @State private var cardNumber = ""
     @State private var cardOwnerName = ""
+    @State private var cvvNumber = ""
+    @State private var cardDate = ""
+    
     let maxLength = 16
     
     var body: some View {
@@ -36,29 +39,39 @@ struct PaymentView: View {
                         .padding(.trailing, 20)
                 }
                 
-                TextField("Name", text: $cardOwnerName)
-                    .autocapitalization(.words)
-                    .onChange(of: cardOwnerName) { Value in
-                        let filtered = Value.filter { $0.isLetter }
-                    }
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                TextField("Enter numbers", text: $cardNumber)
-                    .keyboardType(.numberPad) // SAYI KLAVYESİ
-                    .onChange(of: cardNumber) { newValue in
-                        // SADECE SAYI GIRILMESI KOŞULU
-                        let filtered = newValue.filter { $0.isNumber }
-                        
-                        // 16 SAYIYA KOŞUL KOYUYORUZ
-                        if filtered.count <= maxLength {
-                            cardNumber = formatAsCardNumber(filtered)
-                        } else {
-                            cardNumber = formatAsCardNumber(String(filtered.prefix(maxLength)))
+                VStack(alignment: .leading){
+                    Text("Card Owner Name")
+                    
+                    TextField("Name", text: $cardOwnerName)
+                        .autocapitalization(.words)
+                        .onChange(of: cardOwnerName) { Value in
+                            let filtered = Value.filter { $0.isLetter }
                         }
-                    }
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                }
+                
+                VStack(alignment: .leading){
+                    Text("Card Number")
+                    TextField("Enter numbers", text: $cardNumber)
+                        .keyboardType(.numberPad) // SAYI KLAVYESİ
+                        .onChange(of: cardNumber) { newValue in
+                            // SADECE SAYI GIRILMESI KOŞULU
+                            let filtered = newValue.filter { $0.isNumber }
+                            
+                            // 16 SAYIYA KOŞUL KOYUYORUZ
+                            if filtered.count <= maxLength {
+                                cardNumber = formatAsCardNumber(filtered)
+                            } else {
+                                cardNumber = formatAsCardNumber(String(filtered.prefix(maxLength)))
+                            }
+                        }
+                        .padding()
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                
+                
                 
                 
                 
