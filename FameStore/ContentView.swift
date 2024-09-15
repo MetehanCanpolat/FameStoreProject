@@ -21,34 +21,36 @@ struct ContentView: View {
   
     
     var body: some View {
-        VStack{
-            
-            HeaderView()
-            
-            TabView(selection: $selectedTab) {
+       
+            VStack{
                 
-                AccountPageView()
-                    .tabItem {
-                        Image(systemName: "person.crop.circle")
-                        Text("Account")
-                    }
-                    .tag(1)
+                HeaderView()
                 
-                HomePageView()
-                    .tabItem {
-                        Image(systemName: "house.fill")
-                        Text("Home")
-                    }
-                    .tag(2)
-                
-                ShoppingBagView(isTabViewActive: true)
-                    .badge(Text("\(addedProducts.count)"))
-                    .tabItem {
-                        Label("Shopping Bag", systemImage: "bag")
-                    }
-                    .tag(3)
+                TabView(selection: $selectedTab) {
+                    
+                    AccountPageView()
+                        .tabItem {
+                            Image(systemName: "person.crop.circle")
+                            Text("Account")
+                        }
+                        .tag(1)
+                    
+                    HomePageView()
+                        .tabItem {
+                            Image(systemName: "house.fill")
+                            Text("Home")
+                        }
+                        .tag(2)
+                    
+                    ShoppingBagView(isTabViewActive: true)
+                        .badge(Text("\(addedProducts.count)"))
+                        .tabItem {
+                            Label("Shopping Bag", systemImage: "bag")
+                        }
+                        .tag(3)
+                }
             }
-        }
+        
     }
 }
 

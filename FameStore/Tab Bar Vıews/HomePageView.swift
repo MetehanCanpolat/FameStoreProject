@@ -23,6 +23,7 @@ struct HomePageView: View {
                  //horizontal scrollview
                 productListView()
                   .padding(.bottom)
+              
             }
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)

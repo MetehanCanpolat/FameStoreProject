@@ -101,8 +101,9 @@ struct AllProductsView: View {
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.black)
                 Text("Back")
+                    .foregroundColor(.black)
                 
             })
         }

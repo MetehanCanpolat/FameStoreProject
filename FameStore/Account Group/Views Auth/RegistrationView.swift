@@ -17,10 +17,10 @@ struct RegistrationView: View {
     
     var body: some View {
         VStack{
-            Image(systemName: "bag")
+            Image("logo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                .frame(width: 120)
                 .padding(.vertical, 32)
             
             
@@ -101,9 +101,14 @@ struct RegistrationView: View {
             } label: {
                 HStack{
                     Text("Already have an account?")
+                        .font(Font.custom("Georgia", size: 18))
+                        .foregroundColor(.black)
                     Text("Sign in")
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.black)
+                        .font(Font.custom("Georgia", size: 18))
                 }
+                .padding()
                 .font(.system(size: 14))
             }
             .padding(.bottom, 10)

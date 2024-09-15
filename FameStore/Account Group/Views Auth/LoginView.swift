@@ -17,10 +17,10 @@ struct LoginView: View {
         NavigationStack{
             VStack {
                 // image
-                Image(systemName: "bag")
+                Image("logo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    .frame(width: 150)
                     .padding(.vertical, 32)
                 
                 // form fields
@@ -45,7 +45,6 @@ struct LoginView: View {
                 // sign in button
                 
                 //DISMISS YAPARAK ACCOUNTA DÖNEBİLİRİM!
-                
                 Button{
                     Task{
                         try await viewModel.signIn(withEmail: email,
@@ -53,8 +52,10 @@ struct LoginView: View {
                     }
                 } label:{
                     HStack {
+                        
                         Text("SIGN IN")
                             .fontWeight(.semibold)
+                       
                         Image(systemName: "arrow.right")
                     }
                     .foregroundColor(.white)
@@ -75,10 +76,14 @@ struct LoginView: View {
                 } label: {
                     HStack(spacing: 3) {
                         Text("Don't have an account?")
+                            .font(Font.custom("Georgia", size: 18))
+                            .foregroundColor(.black)
                         Text("Sign Up")
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .font(Font.custom("Georgia", size: 18))
+                            .foregroundColor(.black)
                     }
-                    .font(.system(size: 14))
+                    .padding()
                 }
                 .padding(.bottom, 10)
                 

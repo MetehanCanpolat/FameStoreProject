@@ -10,19 +10,20 @@ import CoreData
 
 struct ShoppingBagView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) private var viewContext
     var isTabViewActive: Bool
     // Core Data'dan veri çekmek için FetchRequest kullanıyoruz
     @FetchRequest(
         entity: AddedProductEntity.entity(),
         sortDescriptors: []
     ) var addedProducts: FetchedResults<AddedProductEntity>
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
+  
     // Ürünlerin toplam fiyatını hesaplamak için
     var totalPrice: Double {
         addedProducts.reduce(0) { $0 + $1.price }
     }
+    @State private var isShowingPaymentView = false
+
     
     
     var body: some View {
@@ -59,7 +60,7 @@ struct ShoppingBagView: View {
                                     Text(product.title ?? "Unknown Title")
                                         .font(Font.custom("Gerorgia", size: 15))
                                     Text("\(product.price, specifier: "%.2f") $")
-                                        .font(.subheadline)
+                                        .font(Font.custom("Gerorgia", size: 15))
                                     //.multilineTextAlignment(.trailing)
                                 }
                             }
@@ -97,23 +98,54 @@ struct ShoppingBagView: View {
                                 .padding(.trailing, 20)
                         }
                         .padding(.top, 20)
+                        
+                        //Buy butonu ve contuniue butonu
+                        
+                        HStack{
+                            /* Button(action: {
+                                isShowingContentView = true
+                            }, label: {
+                                Text("Button")
+                            })
+                            .sheet(isPresented: $isShowingContentView, content: {
+                                ContentView()
+                            }) */
+                            
+                            Spacer()
+                            
+                            Button{
+                                isShowingPaymentView = true
+                            }label: {
+                                Text("Buy")
+                                    .font(Font.custom("Georgia", size: 23))
+                                    .padding(.horizontal, 15)
+                                    .padding(.vertical, 5)
+                                    .foregroundColor(.white)
+                                    .background(Color(red: /*@START_MENU_TOKEN@*/0.5/*@END_MENU_TOKEN@*/, green: /*@START_MENU_TOKEN@*/0.5/*@END_MENU_TOKEN@*/, blue: /*@START_MENU_TOKEN@*/0.5/*@END_MENU_TOKEN@*/))
+                                    .cornerRadius(10)
+                            }
+                            .fullScreenCover(isPresented: $isShowingPaymentView, content: {
+                                PaymentView()
+                            })
+                            
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9)
+                        .padding()
+                        
                     }
-                    
-                    
                     
                 }
                 
             }
-            
-            //.navigationTitle("Shopping Bag")
             //BACK BUTTON
             .navigationBarItems(leading: isTabViewActive ? AnyView(EmptyView()) : AnyView(
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "arrow.backward")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.black)
                     Text("Back")
+                        .foregroundColor(.black)
                 }
             ))
         }

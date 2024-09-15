@@ -13,10 +13,11 @@ struct informationRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12){
             Text(title)
+                .font(Font.custom("Georgia", size: 25))
             Text(info)
                 .foregroundColor(Color(.darkGray))
-                .fontWeight(.semibold)
-                .font(.headline)
+                //.fontWeight(.semibold)
+                .font(Font.custom("Georgia", size: 22))
                 
         }
         .frame(width: UIScreen.main.bounds.width * 0.9, alignment: .leading)

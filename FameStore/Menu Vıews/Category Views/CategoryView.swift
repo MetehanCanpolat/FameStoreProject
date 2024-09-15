@@ -37,7 +37,7 @@ struct CategoryView: View {
                                     .foregroundColor(.black)
                                     .padding()
                             }
-                            .fullScreenCover(isPresented: $isShowingProducts) {
+                            .sheet(isPresented: $isShowingProducts) {
                                 if let selectedCategory = selectedCategory {
                                     CategoriesProductView(category: selectedCategory) // Seçili kategoriyi CategoriesProductView'e gönder
                                 }

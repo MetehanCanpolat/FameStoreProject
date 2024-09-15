@@ -20,6 +20,11 @@ struct ProductSearchView: View {
     var body: some View {
         NavigationView {
             VStack {
+                
+                Text("Prouct Search")
+                    .frame( width: UIScreen.main.bounds.width * 0.9 , alignment: .leading)
+                    .font(Font.custom("Georgia", size: 32))
+                
                 // Arama Çubuğu
                 TextField("Search products...", text: $searchText)
                     .padding()
@@ -60,12 +65,12 @@ struct ProductSearchView: View {
                                         VStack(alignment: .trailing) {
                                             // Ürün başlığının ilk üç kelimesini almak için "components" fonksiyonu
                                             Text(product.title.components(separatedBy: " ").prefix(3).joined(separator: " "))
-                                                .font(.headline)
+                                                .font(Font.custom("Georgia", size: 20))
                                                 .foregroundColor(.black)
                                                 .padding(.bottom, 5)
                                             
                                             Text("Price: \(product.price, specifier: "%.2f") $")
-                                                .font(.subheadline)
+                                                .font(Font.custom("Georgia", size: 15))
                                                 .foregroundColor(.gray)
                                         }
                                     }
@@ -82,7 +87,7 @@ struct ProductSearchView: View {
                     }
                 }
             }
-            .navigationTitle("Product Search")
+            
             .onAppear {
                 loadProducts()
             }
@@ -90,8 +95,9 @@ struct ProductSearchView: View {
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.black)
                 Text("Back")
+                    .foregroundColor(.black)
             })
         }
     }
